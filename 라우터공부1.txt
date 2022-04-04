@@ -1,0 +1,17 @@
+컴포넌트
+뷰
+앱
+기본적으로 App.vue에서 화면을 볼수있다
+하지만 HellowWorld.vue, AboutView.vue, 
+HomeView.vue에서 화면을 출력한다
+App.vue에 적혀있는 라우터링크들의 값은 모두 index.js에 적혀있다
+
+Vue.component ('MyComponent'  => <MyComponent></MyComponent>
+Vue.component ('my-component'  => <my-component/>
+2가지 중 회사에서 사용하는 방식으로 사용하면된다
+
+자바스크립트에서 파일가져오는방법(뷰,이미지 등등 들고올수있다)
+import 어떠한이름으로 들고올건지 from "어디서들고올건지"
+
+cd 파일이름
+npm run serve (실행함)
