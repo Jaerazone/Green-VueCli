@@ -8,18 +8,38 @@
       <!-- 라우터의 index.js의 path를 찾아감-->
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <router-link to="/show">Show</router-link>
+      <router-link to="show">Show</router-link>
+      <router-link to="/double">중첩</router-link>
+      <router-link to="/doubledynamic">사용자페이지</router-link>
     </nav>
+      <button @click=" $router.push({name: 'show'}) ">show</button><br>
+      <button @click=" $router.push('/double') ">중첩</button><br>
 
-    <ul>
-      <li v-for="(num, i) in 4" :key="i">
+      <button
+      v-for="(num,i) in 4"
+      :key="i"
+      @click="$router.push(`/doubledynamic/${num} `)"
+      >
+        {{num}}
+      </button>
+      <br>
+
+      <button
+      v-for="(num,i) in 4"
+      :key="i"
+      @click="$router.push({ name: 'doubledynamic', params : {id : num}})"
+      >
+        {{num}}
+      </button>
+      <br>
+
+      <a v-for="(num, i) in 4" :key="i">
         <!-- 주소값을 조합해서 출력하고 싶을 때 -->
         <!-- 바인드를 이용해서 문자열로 바꿔서 넣어서 수정가능 -->
         <router-link :to="`/dynamic/${num}`">
-          dynamic {{num}}
+          dynamic {{num}} |
         </router-link>
-      </li>
-    </ul>
+      </a>
 
 
     <!-- 새로고침이 일어남 - a, form -->
@@ -45,6 +65,10 @@ nav {
 nav a {
   font-weight: bold;
   color: #2c3e50;
+}
+
+nav a.router-link-active {
+  color: #b94242;
 }
 
 nav a.router-link-exact-active {
