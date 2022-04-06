@@ -11,15 +11,39 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
+    path: '/login',
+    name: 'login',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: function () {
-      return import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+      return import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
     }
-  }
+  },
+  {
+    path: '/board',
+    name: 'board',
+    component: function () {
+      return import('../views/BoardView.vue')
+    },
+    children : [
+      { 
+        // {}객체형식으로 넣어준다 
+        //들어갈 자식이 많으면 [{}] 배열기호로 넣는다
+        path : ':page', 
+        component: function () {
+          return import('../components/PageComponent.vue')
+        }
+      }
+    ]
+  },
+  {
+    path: '/user/:user',
+    name: 'user',
+    component: function () {
+      return import('../views/UserView.vue')
+    }
+  },
 ]
 
 const router = new VueRouter({
